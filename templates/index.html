@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#2E7D32">
+
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/static/sw.js");
+    }
+    </script>
+
+
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expense Dashboard</title>
+</head>
+<body>
+
+<h2>Today's Total: ₹{{ total }}</h2>
+
+<a href="/add">➕ Add Expense</a>
+
+<hr>
+
+<ul>
+{% for e in expenses %}
+  <li>
+    {{ e.date }} |
+    {{ e.category }} |
+    ₹{{ e.amount }} |
+    {{ e.note }}
+  </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
